@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+    <div>
+        {% for post in posts %}
+            Title : {{ post.title }}<br>
+            Content : {{ post.content }}<br>
+            Author : {{ post.author.username }}<br>
+            Creation Date : {{ post.creationDate|date('y-m-d') }}<br>
+            <br>
+        {% endfor %}
+    </div>
+
+{% endblock %}
