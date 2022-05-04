@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<nav>
+    <span>
+        <a href="{{ path('app_main') }}">Main</a>
+    </span>
+    {% if app.user %}
+        {% if "ROLE_ADMIN" in app.user.roles %}
+            <span>
+            <a href="{{ path('app_admin') }}">Administration</a>
+            </span>
+        {% endif %}
+        <span>
+            <a href="{{ path('app_profile') }}">Profile</a>
+        </span>
+        <span>
+            <a href="{{ path('app_post_create') }}">Create Post</a>
+        </span>
+        <span>
+            <a href="{{ path('app_logout') }}">Logout</a>
+        </span>
+    {% endif %}
+
+    {% if app.user is null %}
+        <span>
+            <a href="{{ path('app_login') }}">Login</a>
+        </span>
+        <span>
+            <a href="{{ path('app_register') }}">Register</a>
+        </span>
+    {% endif %}
+</nav>
+    <br>
+{% endblock %}

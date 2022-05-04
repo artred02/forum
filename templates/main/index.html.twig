@@ -4,13 +4,20 @@
 
 {% block body %}
 
+    {% include "includes/header.html.twig" %}
+
     <div>
+        To comment, you have to be connected <br>
         {% for post in posts %}
             Title : {{ post.title }}<br>
             Content : {{ post.content }}<br>
             Author : {{ post.author.username }}<br>
-            Creation Date : {{ post.creationDate|date('y-m-d') }}<br>
-            <br>
+            Creation Date : {{ post.creationDate|date('d-m-y') }}<br>
+            <a href="{{ path('app_post', { id: post.id }) }}">See post</a>
+            {% if app.user %}
+                <a href="{{ path('app_post_answer', { id: post.id }) }}">Answer</a>
+            {% endif %}
+            <br><br><br>
         {% endfor %}
     </div>
 

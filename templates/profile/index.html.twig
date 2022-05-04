@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+
+    Username : {{ user.username }}<br>
+
+    {% for post in posts %}
+        Title : {{ post.title }}
+    {% endfor %}
+
+{% endblock %}

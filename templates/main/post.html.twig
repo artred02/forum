@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    {% include "includes/header.html.twig" %}
+    <h3>Post :</h3>
+    Title : {{ post.title }}<br>
+    Content : {{ post.content }}<br>
+    Creation Date : {{ post.creationDate|date('d-m-y') }}<br>
+
+    <hr>
+    <h3>Commentaries : </h3>
+    {% for comment in comment %}
+        Content : {{ comment.content }}<br><br>
+        author : {{ comment.author.username }}<br>
+        creation date :{{ comment.creationDate|date('d-m-y') }}
+        <hr>
+    {% endfor %}
+
+{% endblock %}

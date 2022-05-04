@@ -4,6 +4,35 @@
 
 {% block body %}
 
+    {% include "includes/header.html.twig" %}
+
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>| Username</th>
+            <th>| Roles</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>| {{ user.username }}</td>
+                <td>
+                    <span>
+                        {% if "ROLE_ADMIN" in user.roles %}
+                            | admin
+                        {% else %}
+                            | user
+                        {% endif %}
+                    </span>
+                </td>
+                {% if "ROLE_ADMIN" not in user.roles %}
+                    <td>
+                        <a href="{{ path('app_user_delete', { id: user.id }) }}">delete</a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
 
 
 {% endblock %}

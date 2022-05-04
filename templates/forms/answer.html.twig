@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    {% include "includes/header.html.twig" %}
+    <div>
+        Title : {{ post.title }}<br>
+        Content : {{ post.content }}<br>
+        Author : {{ post.author.username }}<br>
+        Creation Date : {{ post.creationDate|date('y-m-d') }}<br>
+    </div>
+    <br>
+    <hr>
+    <div>
+        {{ form_start(form) }}
+        Commentary : <div><br></div>
+        {{ form_row(form.content) }}<br>
+        <button type="submit">Send</button>
+        <br>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
